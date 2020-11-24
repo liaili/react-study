@@ -5,8 +5,13 @@ function render(element, container) {
   var type, props;
   type = element.type;
   props = element.props;
-
-  if (typeof type === 'function') {
+  var isReactComponent = type.isReactComponent;
+  if (isReactComponent) {
+    var componentInstance = new type(props);
+    element = componentInstance.render();
+    type = element.type;
+    props = element.props;
+  } else if (typeof type === 'function') {
     element = type(props);
     type = element.type;
     props = element.props;
