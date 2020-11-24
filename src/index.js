@@ -1,8 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from './react';
+import ReactDOM from './react-dom';
+
+var element = React.createElement('h1', {
+  className: 'title',
+  style: {
+    color: 'red',
+  }
+}, 'hello', React.createElement('span', null, 'world'))
 
 ReactDOM.render(
-  <h1>hello</h1>,
+  element,
   document.getElementById('root')
 );
 
